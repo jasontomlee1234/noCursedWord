@@ -1,0 +1,83 @@
+.logo {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-left: 50px;
+}
+.title {
+    line-height: 64px;
+    text-align: center;
+    color: wheat;
+    font-size: 40px;
+    font-weight: 800;
+}
+.btn-list {
+    float: right;
+    display: flex;
+}
+.open img {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+}
+
+.egg img {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+}
+
+.account img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.site-layout-content {
+    display: flex;
+    background-color: lightpink;
+    justify-content: center;
+}
+
+.content-eggs {
+    display: flex;
+    flex-direction: column;
+    background-color: lightpink;
+    align-items: center;
+    height: 900px;
+}
+
+.egg-title {
+    height: 100px;
+    width: 600px;
+    background-color: palegreen;
+    line-height: 100px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 1000;
+    margin: 50px auto;
+    cursor: pointer;
+}
+
+.eggs {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.eggs img {
+    margin: 20px;
+    
+}
+
+.empty-hint {
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+}

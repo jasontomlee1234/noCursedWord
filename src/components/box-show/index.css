@@ -1,0 +1,175 @@
+.logo {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-left: 50px;
+}
+.title {
+    line-height: 64px;
+    text-align: center;
+    color: wheat;
+    font-size: 40px;
+    font-weight: 800;
+}
+.btn-list {
+    float: right;
+    display: flex;
+}
+.open img {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+}
+
+.egg img {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+}
+
+.account img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    background-color: lightpink;
+    justify-content: center;
+    height: 900px;
+}
+
+.openBox {
+    position: relative;
+    height: 600px;
+    width: 600px;
+    padding-top: 100px;
+}
+
+.wrap {
+    margin-top: 300px;
+	perspective: 2000px;
+    perspective-origin: 50% -50%;
+    z-index: 10;
+}
+
+.cube {
+	position: relative;
+	width: 200px;
+    transform-style: preserve-3d;
+    transform: rotateY(45deg);
+    
+}
+
+.infinite-rotate {
+    /* animation: spin 10s linear infinite; */
+}
+.quick-rotate {
+    animation: spin 0.5s linear forwards;
+    animation-iteration-count: 2;
+}
+
+.cube div {
+	position: absolute;
+	width: 200px;
+    height: 200px;
+    border: black solid 1px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: paleturquoise;
+}
+
+.back {
+	transform: translateZ(-100px) rotateY(180deg);
+}
+.right {
+	transform: rotateY(-270deg) translateX(100px);
+	transform-origin: top right;
+}
+.left {
+	transform: rotateY(270deg) translateX(-100px);
+	transform-origin: center left;
+}
+.top {
+	transform: rotateX(-90deg) translateY(-100px);
+    transform-origin: top center;
+}
+.bottom {
+	transform: rotateX(90deg) translateY(100px);
+	transform-origin: bottom center;
+}
+.front {
+	transform: translateZ(100px);
+}
+@keyframes spin {
+	from { transform: rotateY(0deg); }
+	to { transform: rotateY(360deg); }
+}
+
+.btn {
+    position: absolute;
+    top: 700px;
+    left: calc(50%-50);
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: whitesmoke;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hint {
+    position: absolute;
+    height: 100px;
+    width: 500px;
+    top: 800px;
+    left: calc(50%-200);
+    width: 400px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: slateblue;
+}
+
+.egg-icon {
+    position: absolute;
+    top: 400px;
+    width: 100px;
+    height: 100px;
+    left: calc(50%-50);
+    transition-delay: 1s;
+    transition-duration: 1s;
+    z-index: 1;
+    cursor: pointer;
+}
+.egg-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.go-up {
+    transform: translateY(-200px);
+}
+
+.open-top {
+    transition-delay: 1s;
+    transition-duration: 1s;
+    transform: rotateX(-90deg) translateY(-100px) translateZ(-200px);
+    transform-origin: top center;
+}
+
+.ant-modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
