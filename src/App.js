@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 import Home from '../src/components/home/index'
 import OpenBox from '../src/components/box-show/index'
@@ -23,6 +24,7 @@ export default function BasicExample() {
         <Route path="/EggBag">
           <EggBag />
         </Route>
+        <Redirect from='*' to='/' />
       </Switch>
     </Router>
   );
