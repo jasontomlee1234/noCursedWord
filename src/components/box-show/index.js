@@ -88,13 +88,6 @@ export default function OpenBox() {
         console.log("rereshed")
     }, [refreshTime])
 
-    const handleOk = () => {
-        window.location = "/EggBag"
-    }
-
-    const handleCancel = () => {
-        window.history.go(0);
-    }
 
     const popoverContent = account ? (
         <div className="pop-container">
@@ -163,7 +156,7 @@ export default function OpenBox() {
                         
                         <div className={open ? "egg-icon go-up" : "egg-icon"}>
                             <img src={"/logo192.png"} onClick={
-                                () => { setShowModal(true) }
+                                () => { history.push("/EggBag"); }
                             }></img>
                         </div>
                         <div className="box-ids">
@@ -178,20 +171,7 @@ export default function OpenBox() {
                             <div className="hint">chosen box: {chosenBox}</div>
                         </div>
                     </div>
-                    <Modal
-                        title="Congratuations!"
-                        visible={showModal}
-                        footer={[
-                            <Button key="back" onClick={handleCancel}>
-                                Continue to open boxes
-                            </Button>,
-                            <Button key="go" type="primary" onClick={handleOk}>
-                                Go to see my eggs
-                            </Button>
-                        ]}
-                        onOk={handleOk} onCancel={handleCancel}>
-                        <img src={"/logo192.png"}></img>
-                    </Modal>
+
                 </Content> : <Content>
                     <div className="content">
                         <div className="wrap">
