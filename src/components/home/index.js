@@ -32,12 +32,12 @@ export default function Home() {
     const { connector, library, activate, deactivate, active, error, account, chainId } = useWeb3React()
 
     const [lootboxContract, setLootboxContract] = useState()
-    const [quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState('1')
 
     useEffect(async()=>{
-        const _lootboxContract = getContract(address.lootBox,lootboxAbi, library ? library.getSigner(account).connectUnchecked() : library)
+        const _lootboxContract = getContract(address.lootBox, lootboxAbi, library ? library.getSigner(account).connectUnchecked() : library)
         setLootboxContract(_lootboxContract)
-    },[])
+    },[account])
     return (
         <Layout className="layout">
             <Header>
@@ -69,6 +69,7 @@ export default function Home() {
                                 {/* <Link to="/OpenBox">Connect!</Link> */}
                                 {account?<div>
                                     <button style={{background:"transparent", border:"none"}} onClick={()=>{
+                                        console.log(lootboxContract)
                                         mintLootBox(lootboxContract, quantity)
                                     }}>
                                         mint
