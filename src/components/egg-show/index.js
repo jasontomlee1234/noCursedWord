@@ -4,6 +4,7 @@ import { Layout } from 'antd'
 import { Link } from "react-router-dom";
 import { useWeb3React } from '@web3-react/core'
 import { Contract } from '@ethersproject/contracts'
+import { useHistory } from "react-router-dom";
 
 import address from "../../address.json"
 import cursedEggAbi from "../../abis/cursedEgg.json"
@@ -39,6 +40,7 @@ async function getEggIds(contract, address) {
 
 export default function OpenBox() {
     const {library, account} = useWeb3React()
+    let history = useHistory();
 
     const [cursedEggContract, setCursedEggContract] = useState()
     const [eggIds, setEggIds] = useState([])
@@ -51,6 +53,8 @@ export default function OpenBox() {
             const ids = await getEggIds(_cursedEggContract, account)
             console.log("egg ids:", ids)
             setEggIds(ids)
+        }else{
+            history.push("/");
         }
     },[account])
 

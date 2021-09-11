@@ -6,6 +6,7 @@ import { formatEther, parseEther } from '@ethersproject/units'
 import { useWeb3React } from '@web3-react/core'
 import { Contract } from '@ethersproject/contracts'
 import { InjectedConnector } from '@web3-react/injected-connector'
+import { useHistory } from "react-router-dom";
 
 import address from "../../address.json"
 import lootboxAbi from "../../abis/lootbox.json"
@@ -60,6 +61,7 @@ async function mintEgg(contract, tokenId) {
 export default function OpenBox() {
 
     const { connector, library, activate, deactivate, active, error, account, chainId } = useWeb3React()
+    let history = useHistory();
 
     const [open, setOpen] = useState(false)
     const [showModal, setShowModal] = useState(false)
@@ -80,6 +82,8 @@ export default function OpenBox() {
             const ids = await getBoxIds(_lootboxContract, account)
             setBoxIds(ids)
             console.log(ids)
+        }else{
+            history.push("/");
         }
         console.log("rereshed")
     }, [refreshTime])
