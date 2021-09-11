@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useWeb3React } from '@web3-react/core'
 import { Contract } from '@ethersproject/contracts'
 import { useHistory } from "react-router-dom";
-
+import { InjectedConnector } from '@web3-react/injected-connector'
 import address from "../../address.json"
 import cursedEggAbi from "../../abis/cursedEgg.json"
 const { Header, Content, Footer } = Layout;
@@ -14,6 +14,9 @@ const { Header, Content, Footer } = Layout;
 function getContract(address, abi, library) {
     return new Contract(address, abi, library)
 }
+
+const injected = new InjectedConnector({ supportedChainIds: [4002, 250] })
+
 
 async function getBalance(contract, address) {
     try {
@@ -39,7 +42,7 @@ async function getEggIds(contract, address) {
 
 
 export default function OpenBox() {
-    const {library, account} = useWeb3React()
+    const {connector, library, activate, deactivate, active, error, account, chainId} = useWeb3React()
     let history = useHistory();
 
     const [cursedEggContract, setCursedEggContract] = useState()
@@ -75,6 +78,18 @@ export default function OpenBox() {
     if (elements.length === 0) {
         elements.push(<div className="empty-hint">You have no eggs yet.</div>)
     }
+    const popoverContent = account ? (
+        <div className="pop-container">
+            <div className="token">Hi, {account}</div>
+            <Button onClick={deactivate}>disconnect</Button>
+        </div>
+        
+    ):(
+        <div className="pop-container">
+            <div className="token">Let's Connect</div>
+            <Button onClick={() => { activate(injected)}} type="primary">connect</Button>
+        </div>
+    )
     return (
         <Layout className="layout">
             <Header>
@@ -89,12 +104,12 @@ export default function OpenBox() {
                         <Link to="/EggBag"><img src={"/logo192.png"}></img></Link>
                     </div>
                     <div className="account">
-                        <img src={"/logo192.png"}></img>
+                        <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/logo192.png"}></img></Popover>
                     </div>
                 </div>
                 <div className="title">GET MORE EGGS IN THE BOX OR MARKET!</div>
             </Header>
-            <Content>
+            { account ? <Content>
                 <div className="content-eggs">
                     <div className="egg-title" onClick={
                         () => {/*这里跳转到市场*/ }
@@ -105,7 +120,21 @@ export default function OpenBox() {
                         {elements}
                     </div>
                 </div>
-            </Content>
+            </Content> : <Content>
+                    <div className="content">
+                        <div className="wrap">
+                            <div className="cube infinite-rotate">
+                                <div className="front">?</div>
+                                <div className="back">?</div>
+                                <div className="top">?</div>
+                                <div className="bottom">?</div>
+                                <div className="left">?</div>
+                                <div className="right">?</div>
+                            </div>
+                        </div>
+                        <div className="btn" onClick={()=>{activate(injected)}}>connect</div>
+                    </div>
+                </Content>}
             <Footer style={{ textAlign: 'center' }}>Fantom × Cursed Egg</Footer>
         </Layout>
     )
