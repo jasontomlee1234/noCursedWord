@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.css"
-import { Layout } from 'antd'
+import { Layout, Popover, Button } from 'antd'
 import { Link } from "react-router-dom";
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { useWeb3React } from '@web3-react/core'
@@ -33,7 +33,18 @@ export default function Home() {
 
     const [lootboxContract, setLootboxContract] = useState()
     const [quantity, setQuantity] = useState('1')
-
+    const popoverContent = account ? (
+        <div className="pop-container">
+            <div className="token">Hi, {account}</div>
+            <Button onClick={deactivate}>disconnect</Button>
+        </div>
+        
+    ):(
+        <div className="pop-container">
+            <div className="token">Let's Connect</div>
+            <Button onClick={() => { activate(injected)}} type="primary">connect</Button>
+        </div>
+    )
     useEffect(async()=>{
         const _lootboxContract = getContract(address.lootBox, lootboxAbi, library ? library.getSigner(account).connectUnchecked() : library)
         setLootboxContract(_lootboxContract)
@@ -52,7 +63,7 @@ export default function Home() {
                         <Link to="/EggBag"><img src={"/logo192.png"}></img></Link>
                     </div>
                     <div className="account">
-                        <img src={"/logo192.png"}></img>
+                        <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/logo192.png"}></img></Popover>
                     </div>
                 </div>
                 <div className="title">GET A CURSED EGG IN THE BOX !</div>
@@ -64,17 +75,16 @@ export default function Home() {
                         <div className="circle-small">
                             <img src={"/logo192.png"}></img>
                             <div className="box">
-                                {/* 这里放connect和mint逻辑，为测试方便暂时转跳转 */}
-                                <button style={{background:"transparent", border:"none"}} onClick={() => { account ? deactivate() : activate(injected) }}>{account?account:"connect"}</button>
-                                {/* <Link to="/OpenBox">Connect!</Link> */}
-                                {account?<div>
-                                    <button style={{background:"transparent", border:"none"}} onClick={()=>{
-                                        console.log(lootboxContract)
-                                        mintLootBox(lootboxContract, quantity)
-                                    }}>
-                                        mint
-                                    </button>
-                                </div>:null}
+                                <div className="btn-box" onClick={
+                                    () => {
+                                        if (!account) {
+                                            activate(injected)
+                                        } else {
+                                            mintLootBox(lootboxContract, quantity)
+                                        }
+                                    }
+                                }>{account ? "mint" : "connect"}</div>
+                                
                             </div>
                         </div>
                     </div>
