@@ -68,7 +68,7 @@
 }
 
 .infinite-rotate {
-    /* animation: spin 10s linear infinite; */
+    animation: rev 10s linear infinite;
 }
 .quick-rotate {
     animation: spin 0.5s linear forwards;
@@ -115,9 +115,14 @@
 	to { transform: rotateY(360deg); }
 }
 
+@keyframes rev {
+	from { transform: rotateY(0deg); }
+	to { transform: rotateY(-360deg); }
+}
+
 .btn {
     position: absolute;
-    top: 700px;
+    top: 650px;
     left: calc(50%-50);
     width: 100px;
     height: 50px;
@@ -128,16 +133,28 @@
     z-index: 10;
 }
 
-.hint {
+.box-ids {
+    z-index: 50;
     position: absolute;
-    height: 100px;
-    width: 500px;
-    top: 800px;
-    left: calc(50%-200);
-    width: 400px;
+    top: 750px;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box-ids button {
+    margin: 10px;
+}
+
+.hint {
     height: 50px;
+    width: 400px;
     line-height: 50px;
     text-align: center;
+    position: absolute;
+    left: 200px;
+    top: 100px;
     background-color: slateblue;
 }
 

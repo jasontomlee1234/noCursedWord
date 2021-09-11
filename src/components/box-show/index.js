@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./index.css"
-import { Layout, Modal, Button } from 'antd'
+import { Layout, Modal, Button, Popover } from 'antd'
 import { Link } from "react-router-dom";
 import { formatEther, parseEther } from '@ethersproject/units'
 import { useWeb3React } from '@web3-react/core'
@@ -92,6 +92,18 @@ export default function OpenBox() {
         window.history.go(0);
     }
 
+    const popoverContent = account ? (
+        <div className="pop-container">
+            <div className="token">Hi, {account}</div>
+            <Button onClick={deactivate}>disconnect</Button>
+        </div>
+        
+    ):(
+        <div className="pop-container">
+            <div className="token">Let's Connect</div>
+            <Button onClick={() => { activate(injected)}} type="primary">connect</Button>
+        </div>
+    )
 
     const count = 10;
     return (
@@ -108,7 +120,7 @@ export default function OpenBox() {
                         <Link to="/EggBag"><img src={"/logo192.png"}></img></Link>
                     </div>
                     <div className="account">
-                        <img src={"/logo192.png"}></img>
+                        <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/logo192.png"}></img></Popover>
                     </div>
                 </div>
                 <div className="title">OPEN THE BOX AND TAKE THE EGG !</div>
@@ -117,7 +129,7 @@ export default function OpenBox() {
                 account ? <Content>
                     <div className="content">
                         <div className="wrap">
-                            <div className={open ? "cube quick-rotate" : "cube infinite-rotate"}>
+                            <div className={open ? "cube quick-rotate" : "cube"}>
                                 <div className="front">?</div>
                                 <div className="back">?</div>
                                 <div className={open ? "open-top" : "top"}>?</div>
@@ -144,23 +156,23 @@ export default function OpenBox() {
                                 
                             }
                         }>{approved?"Gacha!":"Approve"}</div>
-                        <div className="hint">chosen box: {chosenBox}</div>
-
+                        
                         <div className={open ? "egg-icon go-up" : "egg-icon"}>
                             <img src={"/logo192.png"} onClick={
                                 () => { setShowModal(true) }
                             }></img>
                         </div>
-                    </div>
-                    <div>
-                        {
-                            boxIds.map(element => {
-                                return <button onClick={() => { 
-                                    setChosenBox(element)
-                                    setApproved(false)
-                                 }}>Box Id: {element}</button>
-                            })
-                        }
+                        <div className="box-ids">
+                            {
+                                boxIds.map(element => {
+                                    return <Button onClick={() => { 
+                                        setChosenBox(element)
+                                        setApproved(false)
+                                    }}>Box Id: {element}</Button>
+                                })
+                            }
+                            <div className="hint">chosen box: {chosenBox}</div>
+                        </div>
                     </div>
                     <Modal
                         title="Congratuations!"
@@ -176,7 +188,21 @@ export default function OpenBox() {
                         onOk={handleOk} onCancel={handleCancel}>
                         <img src={"/logo192.png"}></img>
                     </Modal>
-                </Content> : <button style={{ background: "transparent", border: "none" }} onClick={() => { account ? deactivate() : activate(injected) }}>{account ? account : "connect"}</button>
+                </Content> : <Content>
+                    <div className="content">
+                        <div className="wrap">
+                            <div className="cube infinite-rotate">
+                                <div className="front">?</div>
+                                <div className="back">?</div>
+                                <div className={open ? "open-top" : "top"}>?</div>
+                                <div className="bottom">?</div>
+                                <div className="left">?</div>
+                                <div className="right">?</div>
+                            </div>
+                        </div>
+                        <div className="btn" onClick={()=>{activate(injected)}}>connect</div>
+                    </div>
+                </Content>
             }
 
             <Footer style={{ textAlign: 'center' }}>Fantom × Cursed Egg</Footer>
