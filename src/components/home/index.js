@@ -106,7 +106,7 @@ export default function Home() {
                                     <div className="mint-box">
                                     {/* <input type="number"></input> */}
                                     <div className="amount-left">{300 - totalSupply}/300 left</div>
-                                    <input type="number" placeholder="Quantity" onChange={(event) => {
+                                    <input type="number" placeholder="Quantity≤10" onChange={(event) => {
                                         setQuantity(parseInt(event.target.value))
                                     }}></input>
                                     

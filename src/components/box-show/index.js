@@ -165,7 +165,7 @@ export default function OpenBox() {
                                     return <Button onClick={() => { 
                                         setChosenBox(element)
                                         setApproved(false)
-                                    }}>Box Id: {element}</Button>
+                                    }}><img src={"/box-btn.png"}></img>Box Id: {element}</Button>
                                 })
                             }
                             <div className="hint">chosen box: {chosenBox}</div>
