@@ -40,13 +40,14 @@
 	position: absolute;
 	width: 200px;
     height: 200px;
-    border: black solid 1px;
-    font-size: 50px;
+    border: white solid 10px;
+    font-size: 100px;
+    font-weight: 2000;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: paleturquoise;
+    background-color: black;
 }
 
 .back {
@@ -112,6 +113,17 @@
 .box-ids button {
     margin: 10px;
 
+}
+
+.ant-btn {
+    background-color: white!important;
+    border-color: black!important;
+    color: black!important;
+}
+.ant-btn:focus {
+    background-color: black!important;
+    border-color: white!important;
+    color: white!important;
 }
 
 .hint {
