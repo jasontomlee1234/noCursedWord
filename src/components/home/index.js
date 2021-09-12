@@ -18,9 +18,10 @@ function getContract(address, abi, library){
     return new Contract(address, abi, library)
 }
 
-function mintLootBox(contract, quantity){
+async function mintLootBox(contract, quantity){
     try{
-        contract.mintLootBox(quantity)
+        const tx = await contract.mintLootBox(quantity)
+        await tx.wait()
     }catch(e){
         console.log(e)
         alert(e)
@@ -76,11 +77,12 @@ export default function Home() {
                             <img src={"/logo192.png"}></img>
                             <div className="box">
                                 <div className="btn-box" onClick={
-                                    () => {
+                                    async () => {
                                         if (!account) {
                                             activate(injected)
                                         } else {
-                                            mintLootBox(lootboxContract, quantity)
+                                            await mintLootBox(lootboxContract, quantity)
+                                            alert("minted!")
                                         }
                                     }
                                 }>{account ? "mint" : "connect"}</div>

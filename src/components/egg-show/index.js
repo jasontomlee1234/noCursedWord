@@ -71,8 +71,8 @@ export default function OpenBox() {
         { url: "/logo192.png", id: "7" },
     ]
     // This is the real implementation, but files are not yet on the ipfs, so comment out for now
-    // const elements = eggIds.map(id => <div id={id}><img src={`some-url/${id}.jpg`}></img></div>)
-    const elements = mock.map(obj => <div id={obj.id}><img src={obj.url}></img></div>);
+    const elements = eggIds.map(id => <div id={id}><img src={`https://gateway.pinata.cloud/ipfs/QmcfzKiFMHDXuDxeZ9oKU5qwHBe4Qb5kG2Z5VzzQruKp4Z/${id}.png`}></img></div>)
+    // const elements = mock.map(obj => <div id={obj.id}><img src={obj.url}></img></div>);
     // const elements=[]
 
     if (elements.length === 0) {
