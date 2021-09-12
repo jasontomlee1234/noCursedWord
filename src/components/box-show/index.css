@@ -156,10 +156,18 @@
     transition-duration: 1s;
     z-index: 1;
     cursor: pointer;
+    font-size: 40px;
+    font-weight: 2000;
+    color: white;
 }
 .egg-icon img {
     width: 100px;
     height: 100px;
+}
+.question {
+    position: absolute;
+    top: 21px;
+    left: 44px;
 }
 
 .go-up {

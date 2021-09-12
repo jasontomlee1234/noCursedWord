@@ -107,7 +107,7 @@ const elements = eggIds.map(id => <div class="egg-div"><img src={`https://gatewa
                         <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/fox.png"}></img></Popover>
                     </div>
                 </div>
-                <div className="title">GET MORE EGGS IN THE BOX OR MARKET!</div>
+                <div className="title">←MINT MORE BOX TO OPEN!</div>
             </Header>
             { account ? <Content>
                 <div className="content-eggs">

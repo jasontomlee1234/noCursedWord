@@ -120,7 +120,7 @@ export default function OpenBox() {
                         <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/fox.png"}></img></Popover>
                     </div>
                 </div>
-                <div className="title">OPEN THE BOX AND TAKE THE EGG !</div>
+                <div className="title">{open?"CLICK THE EGG TO CHECK THE RESULT↓":"OPEN THE BOX AND TAKE THE EGG !"}</div>
             </Header>
             {
                 account ? <Content>
@@ -157,7 +157,7 @@ export default function OpenBox() {
                         <div className={open ? "egg-icon go-up" : "egg-icon"}>
                             <img src={"/egg.png"} onClick={
                                 () => { history.push("/EggBag"); }
-                            }></img>
+                            }></img><div class="question">?</div>
                         </div>
                         <div className="box-ids">
                             {

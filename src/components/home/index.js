@@ -95,7 +95,7 @@ export default function Home() {
                         <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/fox.png"}></img></Popover>
                     </div>
                 </div>
-                <div className="title">GET A CURSED EGG IN THE BOX !</div>
+                <div className="title">{account ? "OPEN THE BOX TO GET THE EGG →":"WELCOME! CONNECT AND MINT YOUR BOX!"}</div>
             </Header>
             <Content>
                 <div className="site-layout-content">
