@@ -15,7 +15,7 @@ import lootboxAbi from "../../abis/lootbox.json"
 
 const { Header, Content, Footer } = Layout;
 
-const injected = new InjectedConnector({ supportedChainIds: [4002, 250] })
+const injected = new InjectedConnector({ supportedChainIds: [250] })
 
 function getContract(address, abi, library) {
     return new Contract(address, abi, library)
@@ -29,7 +29,7 @@ async function getTotalSupply(contract) {
 async function mintLootBox(contract, quantity) {
     try {
         const tx = await contract.mintLootBox(quantity, {
-            value: quantity * 0 + "000000000000000000"
+            value: quantity * 280 + "000000000000000000"
         })
         await tx.wait()
         alert("minted!")

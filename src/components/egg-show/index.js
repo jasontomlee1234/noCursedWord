@@ -15,7 +15,7 @@ function getContract(address, abi, library) {
     return new Contract(address, abi, library)
 }
 
-const injected = new InjectedConnector({ supportedChainIds: [4002, 250] })
+const injected = new InjectedConnector({ supportedChainIds: [250] })
 
 
 async function getBalance(contract, address) {

@@ -14,7 +14,7 @@ import cursedEggAbi from "../../abis/cursedEgg.json"
 
 const { Header, Content, Footer } = Layout;
 
-const injected = new InjectedConnector({ supportedChainIds: [4002, 250] })
+const injected = new InjectedConnector({ supportedChainIds: [250] })
 
 
 function getContract(address, abi, library) {
