@@ -33,6 +33,7 @@ async function mintLootBox(contract, quantity) {
             value: quantity * 280 + "000000000000000000"
         })
         await tx.wait()
+        alert("minted!")
     } catch (e) {
         console.log(e)
         alert(e.data.message)
@@ -114,7 +115,6 @@ export default function Home() {
                                     <div className="mint" onClick={
                                         async () => {
                                             await mintLootBox(lootboxContract, quantity)
-                                            alert("minted!")
                                         }
                                     }>mint</div>
 
