@@ -112,7 +112,7 @@ const elements = eggIds.map(id => <div class="egg-div"><img src={`https://gatewa
             { account ? <Content>
                 <div className="content-eggs">
                     <div className="egg-title" onClick={
-                        () => {/*这里跳转到市场*/ }
+                        () => { window.open("https://paintswap.finance/nfts") }
                     }>
                         Go to the market!
                     </div>
