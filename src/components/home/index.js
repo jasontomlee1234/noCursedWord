@@ -28,7 +28,6 @@ async function getTotalSupply(contract) {
 
 async function mintLootBox(contract, quantity) {
     try {
-        console.log(quantity * 280 + "000000000000000000")
         const tx = await contract.mintLootBox(quantity, {
             value: quantity * 0 + "000000000000000000"
         })
