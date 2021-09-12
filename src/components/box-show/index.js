@@ -47,9 +47,11 @@ async function approve(contract, tokenId){
     try{
         const tx = await contract.approve(address.cursedEgg, tokenId)
         await tx.wait()
+        return true
     }catch(e){
         console.log(e)
-        alert(e)
+        alert(e.message)
+        return false
     }
 }
 
@@ -70,6 +72,7 @@ export default function OpenBox() {
     const [boxIds, setBoxIds] = useState([])
     const [chosenBox, setChosenBox] = useState()
     const [approved, setApproved] = useState(false)
+    const [approving, setApproving] = useState(false)
     const [refreshTime, setRefreshTime] = useState(0)
 
     useState(async () => {
@@ -86,7 +89,7 @@ export default function OpenBox() {
             history.push("/");
         }
         console.log("rereshed")
-    }, [refreshTime])
+    }, [open])
 
 
     const popoverContent = account ? (
@@ -152,15 +155,19 @@ export default function OpenBox() {
                                         setBoxIds(list)
                                         setOpen(true) 
                                     }else{
-                                        await approve(lootboxContract, chosenBox)
-                                        setApproved(true)
+                                        setApproving(true)
+                                        const success = await approve(lootboxContract, chosenBox)
+                                        setApproving(false)
+                                        if(success){
+                                            setApproved(true)
+                                        }
                                     }
                                 }else{
                                     alert("please choose a box to open")
                                 }
                                 
                             }
-                        }>{approved?"Gacha!":"OK!"}</div>
+                        }>{approved?"Gacha!":approving?"Approving":"Approve"}</div>
                         
                         <div className={open ? "egg-icon go-up" : "egg-icon"}>
                             <img src={"/egg.png"} onClick={
