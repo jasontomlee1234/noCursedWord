@@ -142,6 +142,14 @@ export default function OpenBox() {
                                     if (approved){
                                         await mintEgg(cursedEggContract, chosenBox)
                                         setRefreshTime(Date.now())
+                                        const list = [];
+                                        boxIds.map(id => {
+                                            if (id === chosenBox) {
+                                                return 0;
+                                            }
+                                            list.push(id);
+                                        })
+                                        setBoxIds(list)
                                         setOpen(true) 
                                     }else{
                                         await approve(lootboxContract, chosenBox)
