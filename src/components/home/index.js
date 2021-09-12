@@ -105,7 +105,7 @@ export default function Home() {
                                     <div className="mint-box">
                                     {/* <input type="number"></input> */}
                                     <div className="amount-left">{300 - totalSupply}/300 left</div>
-                                    <input type="number" placeholder="Quantity" onChange={(event) => {
+                                    <input style={{padding:"10px", borderRadius:"10px"}} type="number" placeholder="Quantity" onChange={(event) => {
                                         setQuantity(parseInt(event.target.value))
                                     }}></input>
                                     
@@ -117,7 +117,7 @@ export default function Home() {
                                         }
                                     }>mint</div>
 
-                                    <div className="amount-left">280 FTM</div>
+                                    <div className="amount-left">280 FTM/mint</div>
 
                                     </div> : <div onClick={
                                         async () => {
