@@ -100,6 +100,33 @@
     cursor: pointer;
     animation: my-rotate 8s linear 500ms infinite;
 }
+
+.mint-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    line-height: 50px;
+    height: 300px;
+}
+
+.mint-box input {
+    height: 50px;
+    font-size: 20px;
+    width: 100px;
+}
+
+.amount-left {
+    
+    font-size: 20px;
+}
+
+.mint {
+    height: 100px;
+    line-height: 100px;
+}
+
 @keyframes my-rotate{
     0% {
         transform: rotate(0deg);

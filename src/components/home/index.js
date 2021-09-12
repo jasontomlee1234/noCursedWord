@@ -101,24 +101,34 @@ export default function Home() {
                     <div className="circle-big">
                         <div className="circle-small">
                             <div className="box">
-                                <div className="btn-box" onClick={
-                                    async () => {
-                                        if (!account) {
-                                            activate(injected)
-                                        } else {
+                                {account ? 
+                                    <div className="mint-box">
+                                    {/* <input type="number"></input> */}
+                                    <div className="amount-left">{300 - totalSupply}/300 left</div>
+                                    <input type="number" placeholder="Quantity" onChange={(event) => {
+                                        setQuantity(parseInt(event.target.value))
+                                    }}></input>
+                                    
+                                    
+
+                                    <div className="mint" onClick={
+                                        async () => {
                                             await mintLootBox(lootboxContract, quantity)
                                             alert("minted!")
                                         }
-                                    }
-                                }>{account ? <div>
-                                    {/* <input type="number"></input> */}
-                                    <div>mint</div>
-                                    <div style={{ lineHeight: "100px" }}>280 FTM</div>
-                                    <div style={{ lineHeight: "10px" }}>{300 - totalSupply}/300 left</div>
-                                </div> : "connect"}</div>
-                                {account ? <div style={{ lineHeight: "50px", marginTop: "30px", color: "black" }}><input style={{ width: "300px" }} type="number" placeholder="Quantity" onChange={(event) => {
-                                    setQuantity(parseInt(event.target.value))
-                                }}></input></div> : null}
+                                    }>mint</div>
+
+                                    <div className="amount-left">280 FTM</div>
+
+                                    </div> : <div onClick={
+                                        async () => {
+                                            if (!account) {
+                                                activate(injected)
+                                            }
+                                        }
+                                    }>connect</div>
+                                }
+                                
                             </div>
                         </div>
                     </div>
