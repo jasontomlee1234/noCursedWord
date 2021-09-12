@@ -1,52 +1,13 @@
-.logo {
-    float: left;
-    width: 100px;
-    height: 100px;
-}
-.logo img {
-    width: 50px;
-    height: 50px;
-    margin-left: 50px;
-}
-.title {
-    line-height: 64px;
-    text-align: center;
-    color: wheat;
-    font-size: 40px;
-    font-weight: 800;
-}
-.btn-list {
-    float: right;
-    display: flex;
-}
-.open img {
-    width: 50px;
-    height: 50px;
-    margin-right: 50px;
-}
-
-.egg img {
-    width: 50px;
-    height: 50px;
-    margin-right: 50px;
-}
-
-.account img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
 .site-layout-content {
     display: flex;
-    background-color: lightpink;
+    background-color: black;
     justify-content: center;
 }
 
 .content-eggs {
     display: flex;
     flex-direction: column;
-    background-color: lightpink;
+    background-color: black;
     align-items: center;
     min-height: 900px;
 }

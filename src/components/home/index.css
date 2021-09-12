@@ -1,17 +1,20 @@
+.ant-layout-header {
+    background-color: white!important;
+}
 .logo {
     float: left;
     width: 100px;
     height: 100px;
 }
 .logo img {
-    width: 50px;
-    height: 50px;
-    margin-left: 50px;
+    width: 150px;
+    height: 60px;
+    margin-left: 30px;
 }
 .title {
     line-height: 64px;
     text-align: center;
-    color: wheat;
+    color: rgb(100, 88, 64);
     font-size: 40px;
     font-weight: 800;
 }
@@ -20,20 +23,20 @@
     display: flex;
 }
 .open img {
-    width: 50px;
-    height: 50px;
-    margin-right: 50px;
+    width: 40px;
+    height: 40px;
+    margin-right: 40px;
 }
 
 .egg img {
-    width: 50px;
-    height: 50px;
-    margin-right: 50px;
+    width: 40px;
+    height: 40px;
+    margin-right: 40px;
 }
 
 .account img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -54,25 +57,20 @@
 
 .site-layout-content {
     display: flex;
-    background-color: lightpink;
+    background-color: black;
     justify-content: center;
 }
 
 .circle-big {
-    background-color: lightgrey;
+    background-image: url('./outer.png');
     height: 900px;
     width: 900px;
     border-radius: 50%;
     position: relative;
     animation: my-rotate 8s linear 500ms infinite;
 }
-.circle-big>img {
-    position: absolute;
-    top: 0;
-    right: 500px;
-}
 .circle-small {
-    background-color: lightseagreen;
+    background-image: url('./inner.png');
     height: 600px;
     width: 600px;
     left: 150px;
@@ -95,9 +93,9 @@
     text-align: center;
     font-size: 40px;
     font-weight: 900;
-    color: whitesmoke;
+    color: rgb(114, 99, 71);
     border-radius: 50%;
-    background: #000;
+    background-color: white;
     position: relative;
     cursor: pointer;
     animation: my-rotate 8s linear 500ms infinite;

@@ -94,17 +94,17 @@ export default function OpenBox() {
         <Layout className="layout">
             <Header>
                 <div className="logo">
-                    <Link to="/"><img src={"/logo192.png"}></img></Link>
+                    <Link to="/"><img src={"/logo.png"}></img></Link>
                 </div>
                 <div className="btn-list">
                     <div className="open">
-                        <Link to="/OpenBox"><img src={"/logo192.png"}></img></Link>
+                        <Link to="/OpenBox"><img src={"/box.png"}></img></Link>
                     </div>
                     <div className="egg">
-                        <Link to="/EggBag"><img src={"/logo192.png"}></img></Link>
+                        <Link to="/EggBag"><img src={"/egg.png"}></img></Link>
                     </div>
                     <div className="account">
-                        <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/logo192.png"}></img></Popover>
+                        <Popover content={popoverContent} trigger="click" placement="bottomRight"><img src={"/fox.png"}></img></Popover>
                     </div>
                 </div>
                 <div className="title">GET MORE EGGS IN THE BOX OR MARKET!</div>
