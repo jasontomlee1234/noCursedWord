@@ -30,7 +30,7 @@ async function mintLootBox(contract, quantity) {
     try {
         console.log(quantity * 280 + "000000000000000000")
         const tx = await contract.mintLootBox(quantity, {
-            value: quantity * 280 + "000000000000000000"
+            value: quantity * 0 + "000000000000000000"
         })
         await tx.wait()
         alert("minted!")
